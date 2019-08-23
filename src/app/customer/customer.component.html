@@ -1,0 +1,66 @@
+<body>
+
+<div class="con">
+  <form id="customerForm">
+    <div class="ui form" >
+      <div class="field">
+        <label>Customer ID</label>
+        <input  placeholder="Customer ID" type="text" #id>
+        <br>
+      </div>
+      <div class="field">
+        <label>First Name</label>
+        <input placeholder="First Name" type="text" #name>
+      </div>
+      <div class="field">
+        <label>Address</label>
+        <input placeholder="Address" type="text" #address>
+      </div>
+      <div class="field">
+        <label>Credit Limit</label>
+        <input  placeholder="Credit Limit" type="text" #salary>
+      </div>
+    </div>
+  </form>
+  <div class="inline field">
+    <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <label>I agree to the terms and Details</label>
+    </div>
+  </div>
+  <div class="ui inverted segment">
+    <button class="ui inverted button" type="button" (click)="addCustomer(id.value,name.value,address.value,salary.value)">Save</button>
+    <button class="ui inverted red button" type="button" id="delete">Delete</button>
+    <button class="ui inverted green button">Refresh</button>
+
+  </div>
+  <table class="ui selectable inverted table" id="table">
+    <thead>
+    <tr>
+      <th>Customer ID</th>
+      <th>Customer Name</th>
+      <th>Address</th>
+      <th>Credit Limit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customers">
+      <td style="text-align: center;">{{customer.id}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.address}}</td>
+      <td>{{customer.salary}}</td>
+      <td style="text-align: center;">
+        <button class="ui inverted red button" (click)="removeCustomer(customer)">Remove</button>
+      </td>
+      <td>
+        <button class="ui inverted yellow button" type="button" (click)="removeCustomer(customer)" (click)="addCustomer(id.value,name.value,address.value,salary.value)">Update</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+</div>
+<script src="../../assets/js/jquery-3.4.1.min.js"></script>
+</body>
+
